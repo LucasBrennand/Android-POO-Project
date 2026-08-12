@@ -1,9 +1,7 @@
 # FocusZone — starter da Aula 8
 
-Projeto no estado ensinado em sala: o timer roda dentro de um `TimerService`
-(Foreground Service), com notificação persistente e um botão "Pausar". O foco continua
-contando mesmo com o app em background ou a tela bloqueada.
+1. Atualmente o FocusZone não tem um botão de pausar, apenas iniciar e cancelar, zerando a contagem. Para resolver isso, decidi que após clicar o botão de start focus, invés de ele ficar disabled, esse mesmo botão será o botão de pausar a contagem.
 
-Falta um jeito de manter o `TimerService` vivo quando o app é removido dos Recents (não só
-minimizado pelo Home) — veja os `// TODO` em `TimerService.java` e `AndroidManifest.xml`, e
-o enunciado completo em `../enunciado.md` antes de começar.
+No TimerViewModel foi implementado o metodo pausarContagem() para que envia um intent para TimerService.ACTION_PAUSAR
+
+

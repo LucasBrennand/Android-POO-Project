@@ -139,6 +139,15 @@ public class TimerService extends Service {
         atualizarNotificacao(getString(R.string.notif_foco_pausado));
     }
 
+    private void retomarContagem(){
+        if (timerFoco != null) {
+            timerFoco.cancel();
+            timerFoco = null;
+        }
+        stateHolder.atualizarEmAndamento(true);
+        atualizarNotificacao(getString(R.string.notif_foco_andamento));
+    }
+
     private void cancelarContagem() {
         if (timerFoco != null) {
             timerFoco.cancel();

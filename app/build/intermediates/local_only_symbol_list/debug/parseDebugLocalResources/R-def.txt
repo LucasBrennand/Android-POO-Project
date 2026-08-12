@@ -38,6 +38,7 @@ layout item_tarefa
 mipmap ic_launcher
 mipmap ic_launcher_round
 string acao_pausar
+string acao_retomar
 string app_name
 string btn_adicionar
 string btn_adicionar_tarefa

@@ -4,7 +4,7 @@
             "outputFile": "br.ufpe.cin.focuszone.app-mergeDebugResources-34:/values-en/values-en.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Samsung\\AndroidStudioProjects\\residencia-android-alunos\\exercicios\\aula-08\\starter\\app\\src\\main\\res\\values-en\\strings.xml",
+                    "source": "C:\\Users\\lucasbbc\\AndroidStudioProjects\\Android-POO-Project\\app\\src\\main\\res\\values-en\\strings.xml",
                     "from": {
                         "startLines": "2,1",
                         "startColumns": "4,4",

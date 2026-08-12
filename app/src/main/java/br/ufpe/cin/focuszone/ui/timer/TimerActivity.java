@@ -32,6 +32,7 @@ public class TimerActivity extends AppCompatActivity {
     private EditText nomeTarefaInput;
     private Button iniciarButton;
     private Button cancelarButton;
+    private boolean andamento;
 
     private ActivityResultLauncher<String> permissaoNotificacaoLauncher;
 
@@ -59,8 +60,18 @@ public class TimerActivity extends AppCompatActivity {
         viewModel.getTempoRestanteMillis().observe(this, this::atualizarTempoDisplay);
 
         viewModel.getEmAndamento().observe(this, andamento -> {
-            iniciarButton.setEnabled(!andamento);
-            cancelarButton.setEnabled(andamento);
+            if(andamento){
+                iniciarButton.setText(R.string.acao_pausar);
+            }
+            else{
+                if (tempoDisplay){
+
+                }
+                else{
+
+                }
+            }
+            this.andamento = andamento;
         });
 
         iniciarButton.setOnClickListener(v -> {
@@ -69,7 +80,17 @@ public class TimerActivity extends AppCompatActivity {
                 Snackbar.make(v, R.string.msg_informe_tarefa, Snackbar.LENGTH_SHORT).show();
             } else {
                 Snackbar.make(v, getString(R.string.msg_iniciando_foco, nome), Snackbar.LENGTH_LONG).show();
-                viewModel.iniciarContagem(nome);
+                // Peguei a variavel andamento para alternar entre iniciar e pausar
+                if(andamento){
+                    viewModel.pausarContagem();
+                    iniciarButton.setText(R.string.acao_retomar);
+                    andamento = false;
+                }
+                else{
+                    viewModel.iniciarContagem(nome);
+                    cancelarButton.setEnabled(true);
+                    andamento = true;
+                }
             }
         });
 

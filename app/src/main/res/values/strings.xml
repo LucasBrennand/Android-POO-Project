@@ -33,4 +33,5 @@
     <string name="titulo_notificacao_foco">FocusZone</string>
     <string name="notif_foco_pausado">Foco pausado — toque em Iniciar no app pra recomeçar</string>
     <string name="acao_pausar">Pausar</string>
+    <string name="acao_retomar">Retomar</string> <!--Criado retomar-->
 </resources>

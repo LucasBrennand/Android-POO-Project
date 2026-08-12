@@ -44,6 +44,13 @@ public class TimerViewModel extends AndroidViewModel {
         ContextCompat.startForegroundService(getApplication(), intent);
     }
 
+    //Pausa a contagem atual e inicia um novo intent;
+    public void pausarContagem(){
+        Intent intent = new Intent(getApplication(), TimerService.class);
+        intent.setAction(TimerService.ACTION_PAUSAR);
+        getApplication().startService(intent);
+    }
+
     public void cancelarContagem() {
         Intent intent = new Intent(getApplication(), TimerService.class);
         intent.setAction(TimerService.ACTION_CANCELAR);
