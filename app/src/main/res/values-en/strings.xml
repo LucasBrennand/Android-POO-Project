@@ -1,0 +1,4 @@
+<resources>
+    <string name="hint_nome_tarefa">What are you focusing on?</string>
+    <string name="btn_iniciar">Start focus</string>
+</resources>

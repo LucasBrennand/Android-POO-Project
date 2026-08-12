@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="btn_iniciar">Start focus</string>
+    <string name="hint_nome_tarefa">What are you focusing on?</string>
+</resources>
