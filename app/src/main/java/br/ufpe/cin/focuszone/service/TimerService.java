@@ -43,6 +43,7 @@ public class TimerService extends Service {
     private CountDownTimer timerFoco;
     private String nomeTarefaAtual;
     private TimerActionReceiver actionReceiver;
+    private Long tempoRestanteAtual; //Pega o tempo que falta
 
     @Override
     public void onCreate() {
@@ -106,7 +107,20 @@ public class TimerService extends Service {
         if (timerFoco != null) {
             timerFoco.cancel();
         }
+
+        if (nomeTarefaAtual != null && !nomeTarefaAtual.trim().isEmpty()){
+            stateHolder.atualizarNomeTarefa(nomeTarefaAtual);
+        }
+
+        this.tempoRestanteAtual = stateHolder.getTempoRestanteMillis().getValue();
+        //Se o tempo que falta for null ou 0, declaramos 0 segundos faltando, se não pegue o valor dos segundos que faltam
+        if (this.tempoRestanteAtual == null){
+            this.tempoRestanteAtual = 0L;
+        }
         long duracaoMillis = configuracaoRepository.getDuracaoFocoMinutos() * 60_000L;
+        if (tempoRestanteAtual > 0 && tempoRestanteAtual < duracaoMillis){
+            duracaoMillis = tempoRestanteAtual;
+        }
         startForeground(NOTIFICATION_ID,
                 construirNotificacao(getString(R.string.notif_foco_andamento, nomeTarefaAtual)));
 
@@ -139,15 +153,6 @@ public class TimerService extends Service {
         atualizarNotificacao(getString(R.string.notif_foco_pausado));
     }
 
-    private void retomarContagem(){
-        if (timerFoco != null) {
-            timerFoco.cancel();
-            timerFoco = null;
-        }
-        stateHolder.atualizarEmAndamento(true);
-        atualizarNotificacao(getString(R.string.notif_foco_andamento));
-    }
-
     private void cancelarContagem() {
         if (timerFoco != null) {
             timerFoco.cancel();
@@ -155,6 +160,7 @@ public class TimerService extends Service {
         }
         stateHolder.atualizarEmAndamento(false);
         stateHolder.atualizarTempoRestante(configuracaoRepository.getDuracaoFocoMinutos() * 60_000L);
+        stateHolder.atualizarNomeTarefa("");
         stopForeground(STOP_FOREGROUND_REMOVE);
         stopSelf();
     }

@@ -9,6 +9,7 @@ public class TimerStateHolder {
 
     private final MutableLiveData<Long> tempoRestanteMillis = new MutableLiveData<>(0L);
     private final MutableLiveData<Boolean> emAndamento = new MutableLiveData<>(false);
+    private MutableLiveData<String> nomeTarefa = new MutableLiveData<>(""); //Isso vai ser pra guardar o nome da tarefa quando fecha o app
 
     private TimerStateHolder() {
     }
@@ -26,6 +27,22 @@ public class TimerStateHolder {
 
     public LiveData<Boolean> getEmAndamento() {
         return emAndamento;
+    }
+
+    public LiveData<String> getNomeTarefa() {
+        return nomeTarefa;
+    }
+
+    public void atualizarNomeTarefa(String nome){
+        nomeTarefa.setValue(nome);
+    }
+
+    public static TimerStateHolder getInstancia() {
+        return instancia;
+    }
+
+    public static void setInstancia(TimerStateHolder instancia) {
+        TimerStateHolder.instancia = instancia;
     }
 
     public void atualizarTempoRestante(long millis) {

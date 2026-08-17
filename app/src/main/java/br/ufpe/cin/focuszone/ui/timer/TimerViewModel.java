@@ -30,10 +30,21 @@ public class TimerViewModel extends AndroidViewModel {
         return stateHolder.getEmAndamento();
     }
 
+    public LiveData<String> getNomeTarefa(){
+        return stateHolder.getNomeTarefa();
+    }
+
+    //Criado o metodo para pegar a duração total escolhida
+    public long getDuracaoTotalMillis() {
+        return configuracaoRepository.getDuracaoFocoMinutos() * 60_000L;
+    }
+
     public void sincronizarDuracaoConfigurada() {
         Boolean andamento = stateHolder.getEmAndamento().getValue();
-        if (andamento == null || !andamento) {
-            stateHolder.atualizarTempoRestante(configuracaoRepository.getDuracaoFocoMinutos() * 60_000L);
+        Long tempoRestante = stateHolder.getTempoRestanteMillis().getValue();
+        // Agora quando o app abre novamente e tempo estiver pausado, o timer não reseta
+        if ((andamento == null || !andamento) && (tempoRestante == null || tempoRestante == 0L)) {
+            stateHolder.atualizarTempoRestante(getDuracaoTotalMillis());
         }
     }
 
@@ -44,8 +55,7 @@ public class TimerViewModel extends AndroidViewModel {
         ContextCompat.startForegroundService(getApplication(), intent);
     }
 
-    //Pausa a contagem atual e inicia um novo intent;
-    public void pausarContagem(){
+    public void pausarContagem() {
         Intent intent = new Intent(getApplication(), TimerService.class);
         intent.setAction(TimerService.ACTION_PAUSAR);
         getApplication().startService(intent);

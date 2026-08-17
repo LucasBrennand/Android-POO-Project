@@ -33,6 +33,7 @@ public class TimerActivity extends AppCompatActivity {
     private Button iniciarButton;
     private Button cancelarButton;
     private boolean andamento;
+    private long tempoRestanteAtual;
 
     private ActivityResultLauncher<String> permissaoNotificacaoLauncher;
 
@@ -60,36 +61,41 @@ public class TimerActivity extends AppCompatActivity {
         viewModel.getTempoRestanteMillis().observe(this, this::atualizarTempoDisplay);
 
         viewModel.getEmAndamento().observe(this, andamento -> {
+            this.andamento = andamento;
+            cancelarButton.setEnabled(andamento);
             if(andamento){
                 iniciarButton.setText(R.string.acao_pausar);
             }
             else{
-                if (tempoDisplay){
-
-                }
-                else{
-
+                if (tempoRestanteAtual > 0 && tempoRestanteAtual < viewModel.getDuracaoTotalMillis()) {
+                    iniciarButton.setText(R.string.acao_retomar);
+                } else {
+                    iniciarButton.setText(R.string.btn_iniciar);
                 }
             }
             this.andamento = andamento;
         });
 
+        //Isso vai ser usado para armazenar a tarefa
+        viewModel.getNomeTarefa().observe(this, nome -> {
+            if (nome != null && !nome.isEmpty()){
+                nomeTarefaInput.setText(nome);
+            }
+        });
+
+        //Inverteu a ordem para checar primeiro se está em andamento
         iniciarButton.setOnClickListener(v -> {
-            String nome = nomeTarefaInput.getText().toString().trim();
-            if (nome.isEmpty()) {
-                Snackbar.make(v, R.string.msg_informe_tarefa, Snackbar.LENGTH_SHORT).show();
+            if (andamento) {
+                // Se já estiver rodando, pausa
+                viewModel.pausarContagem();
             } else {
-                Snackbar.make(v, getString(R.string.msg_iniciando_foco, nome), Snackbar.LENGTH_LONG).show();
-                // Peguei a variavel andamento para alternar entre iniciar e pausar
-                if(andamento){
-                    viewModel.pausarContagem();
-                    iniciarButton.setText(R.string.acao_retomar);
-                    andamento = false;
-                }
-                else{
+                // Se está parado ou pausado, valida o nome antes de iniciar ou retomar
+                String nome = nomeTarefaInput.getText().toString().trim();
+                if (nome.isEmpty()) {
+                    Snackbar.make(v, R.string.msg_informe_tarefa, Snackbar.LENGTH_SHORT).show();
+                } else {
+                    Snackbar.make(v, getString(R.string.msg_iniciando_foco, nome), Snackbar.LENGTH_LONG).show();
                     viewModel.iniciarContagem(nome);
-                    cancelarButton.setEnabled(true);
-                    andamento = true;
                 }
             }
         });
@@ -116,6 +122,7 @@ public class TimerActivity extends AppCompatActivity {
         long segundosTotais = millisRestantes / 1000;
         long minutos = segundosTotais / 60;
         long segundos = segundosTotais % 60;
+        this.tempoRestanteAtual = millisRestantes; //salva o milisegundos faltando na variavel
         tempoDisplay.setText(String.format(Locale.getDefault(), "%02d:%02d", minutos, segundos));
     }
 
