@@ -23,6 +23,11 @@ public class TarefaRepository {
         return dao.listarTodas();
     }
 
+    //Adionando o metodo do dao de filtrar
+    public LiveData<List<Tarefa>> buscarPorTitulo(String titulo){
+        return dao.buscarPorTitulo(titulo);
+    }
+
     @WorkerThread
     public void inserir(Tarefa tarefa) {
         dao.inserir(tarefa);
