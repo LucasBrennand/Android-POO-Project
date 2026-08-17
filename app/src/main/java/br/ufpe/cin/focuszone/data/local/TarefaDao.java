@@ -25,4 +25,8 @@ public interface TarefaDao {
 
     @Query("SELECT * FROM tarefas ORDER BY id ASC")
     LiveData<List<Tarefa>> listarTodas();
+
+    //Metodo que filtra as tarefas com o texto inserido
+    @Query("SELECT * FROM tarefas WHERE titulo LIKE '%'+titulo+'%' ")
+    LiveData<List<Tarefa>> buscarPorTitulo(String titulo);
 }
