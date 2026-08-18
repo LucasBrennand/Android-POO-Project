@@ -1,6 +1,8 @@
 package br.ufpe.cin.focuszone.ui.tarefas;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -23,6 +25,7 @@ public class TarefasActivity extends AppCompatActivity {
 
     private TarefasViewModel viewModel;
     private TarefasAdapter adapter;
+    private EditText buscaTitulo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +81,25 @@ public class TarefasActivity extends AppCompatActivity {
                     })
                     .setNegativeButton(R.string.btn_cancelar, null)
                     .show();
+        });
+
+        buscaTitulo = findViewById(R.id.editTextInput);
+        //Adcionamos o TextWatcher para criar metodo onTextChanged que vai captura as alterações no input
+        buscaTitulo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                viewModel.setTituloBusca(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
         });
     }
 

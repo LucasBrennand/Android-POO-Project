@@ -4,6 +4,8 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
 import br.ufpe.cin.focuszone.data.repository.TarefaRepository;
@@ -13,10 +15,19 @@ public class TarefasViewModel extends ViewModel {
 
     private final TarefaRepository repository;
     private final LiveData<List<Tarefa>> tarefas;
+    private final MutableLiveData<String> tituloBusca = new MutableLiveData<>("");
 
     public TarefasViewModel(@NonNull TarefaRepository repository) {
         this.repository = repository;
-        this.tarefas = repository.listarTodas();
+        //Utilizamos o Transformations.switchMap para que ele observe as alterações do titulo buscado, depois fazemos uma condição para mostrar o titulo que foi buscado ou todos os titulos se o input estiver vazio
+        this.tarefas = Transformations.switchMap(tituloBusca, titulo -> {
+            if (titulo == null || titulo.trim().isEmpty()){
+                return repository.listarTodas();
+            }
+            else{
+                return repository.buscarPorTitulo(titulo);
+            }
+        });
     }
 
     public LiveData<List<Tarefa>> getTarefas() {
@@ -26,6 +37,11 @@ public class TarefasViewModel extends ViewModel {
     public void alternarConcluida(Tarefa tarefa) {
         tarefa.setConcluida(!tarefa.isConcluida());
         new Thread(() -> repository.atualizar(tarefa)).start();
+    }
+
+    //Esse metodo é pra definir o titulo que vamos buscar
+    public void setTituloBusca(String titulo){
+        tituloBusca.setValue(titulo);
     }
 
     public void remover(Tarefa tarefa) {
