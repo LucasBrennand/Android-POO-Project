@@ -30,6 +30,7 @@ id tempoDisplay
 id tituloConfiguracaoText
 id tituloHistoricoText
 id todasButton
+id ultimaSemanaButton
 layout activity_configuracao
 layout activity_historico
 layout activity_main
@@ -74,6 +75,7 @@ string titulo_historico
 string titulo_notificacao_foco
 string titulo_notificacao_pausa
 string titulo_nova_tarefa
+string ultima_semana
 style Base.Theme.FocusZone
 style Theme.FocusZone
 xml backup_rules

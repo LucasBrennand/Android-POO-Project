@@ -173,7 +173,7 @@ public final class TarefaDao_Impl implements TarefaDao {
 
   @Override
   public LiveData<List<Tarefa>> buscarPorTitulo(final String titulo) {
-    final String _sql = "SELECT * FROM tarefas WHERE ? LIKE '||'+titulo+'||' ";
+    final String _sql = "SELECT * FROM tarefas WHERE titulo LIKE '%' || ? || '%'";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
     if (titulo == null) {

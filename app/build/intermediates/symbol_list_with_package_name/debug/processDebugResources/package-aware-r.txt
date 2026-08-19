@@ -3617,6 +3617,7 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id ultimaSemanaButton
 id unchecked
 id uniform
 id unlabeled
@@ -4045,6 +4046,7 @@ string titulo_historico
 string titulo_notificacao_foco
 string titulo_notificacao_pausa
 string titulo_nova_tarefa
+string ultima_semana
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog

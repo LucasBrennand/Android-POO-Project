@@ -6,6 +6,7 @@ import java.time.Instant;
 import java.util.List;
 
 import androidx.annotation.WorkerThread;
+import androidx.lifecycle.LiveData;
 
 import br.ufpe.cin.focuszone.data.local.FocusZoneDatabase;
 import br.ufpe.cin.focuszone.data.local.SessaoDao;
@@ -27,6 +28,12 @@ public class SessaoRepository {
     @WorkerThread
     public List<Sessao> listarDeHoje(Instant inicioDoDia) {
         return dao.listarDeHoje(inicioDoDia);
+    }
+
+    //Adicionado o metodo que vem do Dao
+    @WorkerThread
+    public List<Sessao> listaDaSemana(Instant inicioDaSemana){
+        return dao.listaDaSemana(inicioDaSemana);
     }
 
     @WorkerThread

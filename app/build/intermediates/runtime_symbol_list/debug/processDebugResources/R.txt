@@ -3616,6 +3616,7 @@ int id transition_position 0x7f0901f8
 int id transition_scene_layoutid_cache 0x7f0901f9
 int id transition_transform 0x7f0901fa
 int id triangle 0x7f0901fb
+int id ultimaSemanaButton 0x7f090214
 int id unchecked 0x7f0901fc
 int id uniform 0x7f0901fd
 int id unlabeled 0x7f0901fe
@@ -4044,6 +4045,7 @@ int string titulo_historico 0x7f1000c6
 int string titulo_notificacao_foco 0x7f1000c7
 int string titulo_notificacao_pausa 0x7f1000c8
 int string titulo_nova_tarefa 0x7f1000c9
+int string ultima_semana 0x7f1000ca
 int style AlertDialog_AppCompat 0x7f110000
 int style AlertDialog_AppCompat_Light 0x7f110001
 int style Animation_AppCompat_Dialog 0x7f110002

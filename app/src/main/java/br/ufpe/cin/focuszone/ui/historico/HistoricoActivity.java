@@ -40,12 +40,18 @@ public class HistoricoActivity extends AppCompatActivity {
         historicoRecyclerView.setAdapter(adapter);
 
         sessaoRepository = new SessaoRepository(this);
-        carregarSessoes(true);
+        carregarSessoes(1);
 
         Button hojeButton = findViewById(R.id.hojeButton);
         Button todasButton = findViewById(R.id.todasButton);
-        hojeButton.setOnClickListener(v -> carregarSessoes(true));
-        todasButton.setOnClickListener(v -> carregarSessoes(false));
+        Button semanaButton = findViewById(R.id.ultimaSemanaButton);
+        // Cada botão tem um numero int e o carregarSessoes vai executar baseada nesse número
+        // 1 - Hoje
+        // 2 - Ultima Semana
+        // 3 - Todos
+        hojeButton.setOnClickListener(v -> carregarSessoes(1));
+        semanaButton.setOnClickListener(v -> carregarSessoes(2));
+        todasButton.setOnClickListener(v -> carregarSessoes(3));
 
         Button compartilharButton = findViewById(R.id.compartilharButton);
         compartilharButton.setOnClickListener(v -> {
@@ -56,11 +62,22 @@ public class HistoricoActivity extends AppCompatActivity {
         });
     }
 
-    private void carregarSessoes(boolean apenasHoje) {
+    //Ajustado o parametro para int
+    private void carregarSessoes(int op) {
         new Thread(() -> {
-            List<Sessao> sessoesDoBanco = apenasHoje
-                    ? sessaoRepository.listarDeHoje(inicioDoDia())
-                    : sessaoRepository.listarTodas();
+            List<Sessao> sessoesDoBanco;
+
+            if (op == 1){
+                sessoesDoBanco = sessaoRepository.listarDeHoje(inicioDoDia());
+            }
+            else if (op == 2){
+                sessoesDoBanco = sessaoRepository.listaDaSemana(inicioDaSemana());
+            }
+            else if (op == 3) {
+                sessoesDoBanco = sessaoRepository.listarTodas();
+            } else {
+                sessoesDoBanco = null;
+            }
             runOnUiThread(() -> {
                 sessoes.clear();
                 sessoes.addAll(sessoesDoBanco);
@@ -73,5 +90,10 @@ public class HistoricoActivity extends AppCompatActivity {
         return LocalDate.now()
                 .atStartOfDay(ZoneId.systemDefault())
                 .toInstant();
+    }
+
+    //Metodo para pegar ultimo 7 dias
+    private Instant inicioDaSemana(){
+        return LocalDate.now().minusDays(7).atStartOfDay(ZoneId.systemDefault()).toInstant();
     }
 }

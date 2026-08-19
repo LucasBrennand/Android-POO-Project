@@ -35,4 +35,5 @@
     <string name="acao_pausar">Pausar</string>
     <string name="acao_retomar">Retomar</string> <!--Criado retomar-->
     <string name="buscar_titulo">Buscar por título…</string>
+    <string name="ultima_semana">Ultima Semana</string>
 </resources>

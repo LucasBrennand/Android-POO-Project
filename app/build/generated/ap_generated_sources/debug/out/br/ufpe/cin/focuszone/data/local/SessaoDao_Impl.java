@@ -172,6 +172,61 @@ public final class SessaoDao_Impl implements SessaoDao {
     }
   }
 
+  @Override
+  public List<Sessao> listaDaSemana(final Instant inicioDaSemana) {
+    final String _sql = "SELECT * FROM sessoes WHERE iniciadaEm >= ? ORDER BY iniciadaEm DESC";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    final Long _tmp = InstantConverter.fromInstant(inicioDaSemana);
+    if (_tmp == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindLong(_argIndex, _tmp);
+    }
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+      final int _cursorIndexOfTarefaTitulo = CursorUtil.getColumnIndexOrThrow(_cursor, "tarefaTitulo");
+      final int _cursorIndexOfDuracaoMinutos = CursorUtil.getColumnIndexOrThrow(_cursor, "duracaoMinutos");
+      final int _cursorIndexOfIniciadaEm = CursorUtil.getColumnIndexOrThrow(_cursor, "iniciadaEm");
+      final int _cursorIndexOfConcluida = CursorUtil.getColumnIndexOrThrow(_cursor, "concluida");
+      final List<Sessao> _result = new ArrayList<Sessao>(_cursor.getCount());
+      while (_cursor.moveToNext()) {
+        final Sessao _item;
+        final String _tmpTarefaTitulo;
+        if (_cursor.isNull(_cursorIndexOfTarefaTitulo)) {
+          _tmpTarefaTitulo = null;
+        } else {
+          _tmpTarefaTitulo = _cursor.getString(_cursorIndexOfTarefaTitulo);
+        }
+        final int _tmpDuracaoMinutos;
+        _tmpDuracaoMinutos = _cursor.getInt(_cursorIndexOfDuracaoMinutos);
+        final Instant _tmpIniciadaEm;
+        final Long _tmp_1;
+        if (_cursor.isNull(_cursorIndexOfIniciadaEm)) {
+          _tmp_1 = null;
+        } else {
+          _tmp_1 = _cursor.getLong(_cursorIndexOfIniciadaEm);
+        }
+        _tmpIniciadaEm = InstantConverter.toInstant(_tmp_1);
+        final boolean _tmpConcluida;
+        final int _tmp_2;
+        _tmp_2 = _cursor.getInt(_cursorIndexOfConcluida);
+        _tmpConcluida = _tmp_2 != 0;
+        _item = new Sessao(_tmpTarefaTitulo,_tmpDuracaoMinutos,_tmpIniciadaEm,_tmpConcluida);
+        final long _tmpId;
+        _tmpId = _cursor.getLong(_cursorIndexOfId);
+        _item.setId(_tmpId);
+        _result.add(_item);
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
   @NonNull
   public static List<Class<?>> getRequiredConverters() {
     return Collections.emptyList();
