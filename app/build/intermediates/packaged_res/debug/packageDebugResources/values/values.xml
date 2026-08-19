@@ -24,6 +24,7 @@
     <string name="btn_salvar">Salvar</string>
     <string name="btn_tarefas">Tarefas</string>
     <string name="btn_todas">Todas</string>
+    <string name="buscar_titulo">Buscar por título…</string>
     <string name="canal_timer_descricao">Notificações de fim de ciclo de foco</string>
     <string name="canal_timer_nome">Timer de foco</string>
     <string name="hint_nome_tarefa">No que você vai focar?</string>

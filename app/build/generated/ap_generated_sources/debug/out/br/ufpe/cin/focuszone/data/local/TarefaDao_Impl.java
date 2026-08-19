@@ -171,6 +171,58 @@ public final class TarefaDao_Impl implements TarefaDao {
     });
   }
 
+  @Override
+  public LiveData<List<Tarefa>> buscarPorTitulo(final String titulo) {
+    final String _sql = "SELECT * FROM tarefas WHERE titulo LIKE '%' || ? || '%'";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    if (titulo == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindString(_argIndex, titulo);
+    }
+    return __db.getInvalidationTracker().createLiveData(new String[] {"tarefas"}, false, new Callable<List<Tarefa>>() {
+      @Override
+      @Nullable
+      public List<Tarefa> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+          final int _cursorIndexOfTitulo = CursorUtil.getColumnIndexOrThrow(_cursor, "titulo");
+          final int _cursorIndexOfConcluida = CursorUtil.getColumnIndexOrThrow(_cursor, "concluida");
+          final List<Tarefa> _result = new ArrayList<Tarefa>(_cursor.getCount());
+          while (_cursor.moveToNext()) {
+            final Tarefa _item;
+            final String _tmpTitulo;
+            if (_cursor.isNull(_cursorIndexOfTitulo)) {
+              _tmpTitulo = null;
+            } else {
+              _tmpTitulo = _cursor.getString(_cursorIndexOfTitulo);
+            }
+            _item = new Tarefa(_tmpTitulo);
+            final long _tmpId;
+            _tmpId = _cursor.getLong(_cursorIndexOfId);
+            _item.setId(_tmpId);
+            final boolean _tmpConcluida;
+            final int _tmp;
+            _tmp = _cursor.getInt(_cursorIndexOfConcluida);
+            _tmpConcluida = _tmp != 0;
+            _item.setConcluida(_tmpConcluida);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
+      }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    });
+  }
+
   @NonNull
   public static List<Class<?>> getRequiredConverters() {
     return Collections.emptyList();

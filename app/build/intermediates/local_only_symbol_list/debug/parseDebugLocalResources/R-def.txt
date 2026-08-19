@@ -13,6 +13,7 @@ id compartilharButton
 id configuracaoButton
 id duracaoFocoLabel
 id duracaoFocoSeekBar
+id editTextInput
 id historicoButton
 id historicoRecyclerView
 id hojeButton
@@ -52,6 +53,7 @@ string btn_iniciar
 string btn_salvar
 string btn_tarefas
 string btn_todas
+string buscar_titulo
 string canal_timer_descricao
 string canal_timer_nome
 string hint_nome_tarefa

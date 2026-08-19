@@ -84,7 +84,7 @@ public class TarefasActivity extends AppCompatActivity {
         });
 
         buscaTitulo = findViewById(R.id.editTextInput);
-        //Adcionamos o TextWatcher para criar metodo onTextChanged que vai captura as alterações no input
+        //Adcionamos o TextWatcher para criar metodo onTextChanged que vai capturar as alterações no input
         buscaTitulo.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

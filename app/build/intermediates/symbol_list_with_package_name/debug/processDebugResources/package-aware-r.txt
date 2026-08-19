@@ -3291,6 +3291,7 @@ id easeInOut
 id easeOut
 id east
 id edge
+id editTextInput
 id edit_query
 id edit_text_id
 id elastic
@@ -3892,6 +3893,7 @@ string btn_iniciar
 string btn_salvar
 string btn_tarefas
 string btn_todas
+string buscar_titulo
 string call_notification_answer_action
 string call_notification_answer_video_action
 string call_notification_decline_action

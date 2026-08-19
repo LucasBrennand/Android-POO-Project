@@ -27,6 +27,8 @@ public interface TarefaDao {
     LiveData<List<Tarefa>> listarTodas();
 
     //Metodo que filtra as tarefas com o texto inserido
-    @Query("SELECT * FROM tarefas WHERE titulo LIKE '%'+titulo+'%' ")
+    //SQLlite usada || inves de +
+    //:titulo para encontrar em qualquer posição
+    @Query("SELECT * FROM tarefas WHERE titulo LIKE '%' || :titulo || '%'")
     LiveData<List<Tarefa>> buscarPorTitulo(String titulo);
 }
