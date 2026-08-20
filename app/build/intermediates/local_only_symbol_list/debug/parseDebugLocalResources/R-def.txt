@@ -75,6 +75,7 @@ string msg_notificacao_pausa
 string msg_titulo_vazio
 string notif_foco_andamento
 string notif_foco_pausado
+string tarefa_ja_existe
 string titulo_compartilhar
 string titulo_configuracao
 string titulo_historico

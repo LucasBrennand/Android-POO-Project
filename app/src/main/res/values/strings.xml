@@ -37,4 +37,5 @@
     <string name="buscar_titulo">Buscar por título…</string>
     <string name="ultima_semana">Ultima Semana</string>
     <string name="total_de_tarefas_essa_semana">Total de Tarefas essa Semana:</string>
+    <string name="tarefa_ja_existe">Essa tarefa já existe</string>
 </resources>

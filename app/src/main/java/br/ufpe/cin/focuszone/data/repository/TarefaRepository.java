@@ -42,4 +42,9 @@ public class TarefaRepository {
     public void remover(Tarefa tarefa) {
         dao.remover(tarefa);
     }
+
+    @WorkerThread
+    public int verificarTituloExiste(String titulo){
+        return dao.verificarTituloExiste(titulo);
+    }
 }

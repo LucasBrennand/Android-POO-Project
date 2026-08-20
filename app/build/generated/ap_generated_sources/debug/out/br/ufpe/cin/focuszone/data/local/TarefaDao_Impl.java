@@ -126,6 +126,32 @@ public final class TarefaDao_Impl implements TarefaDao {
   }
 
   @Override
+  public int verificarTituloExiste(final String titulo) {
+    final String _sql = "SELECT COUNT(*) FROM tarefas WHERE LOWER(titulo) = LOWER(?)";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    if (titulo == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindString(_argIndex, titulo);
+    }
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _result;
+      if (_cursor.moveToFirst()) {
+        _result = _cursor.getInt(0);
+      } else {
+        _result = 0;
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
   public LiveData<List<Tarefa>> listarTodas() {
     final String _sql = "SELECT * FROM tarefas ORDER BY id ASC";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);

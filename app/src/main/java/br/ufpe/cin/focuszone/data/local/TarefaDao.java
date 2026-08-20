@@ -13,6 +13,9 @@ import br.ufpe.cin.focuszone.domain.Tarefa;
 
 @Dao
 public interface TarefaDao {
+    //Como SQLite não armazena boolean, é preciso usar int 0: falso e 1: verdadeiro
+    @Query("SELECT COUNT(*) FROM tarefas WHERE LOWER(titulo) = LOWER(:titulo)")
+    int verificarTituloExiste(String titulo);
 
     @Insert
     void inserir(Tarefa tarefa);

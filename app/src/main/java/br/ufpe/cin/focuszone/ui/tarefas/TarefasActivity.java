@@ -76,7 +76,18 @@ public class TarefasActivity extends AppCompatActivity {
                         if (titulo.isEmpty()) {
                             Snackbar.make(v, R.string.msg_titulo_vazio, Snackbar.LENGTH_SHORT).show();
                         } else {
-                            viewModel.adicionar(titulo);
+                            //Quando for adicionar uma nova tarefa, uma busca vai ser feito para checar se esse titulo já existe
+                            new Thread(() -> {
+                                int qtd = repository.verificarTituloExiste(titulo);
+                                runOnUiThread(() -> {
+                                    if (qtd > 0){
+                                        Snackbar.make(v, R.string.tarefa_ja_existe, Snackbar.LENGTH_SHORT).show();
+                                    }
+                                    else{
+                                        viewModel.adicionar(titulo);
+                                    }
+                                });
+                            }).start();
                         }
                     })
                     .setNegativeButton(R.string.btn_cancelar, null)
