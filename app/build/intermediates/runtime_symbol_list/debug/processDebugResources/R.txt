@@ -2097,6 +2097,7 @@ int color primary_dark_material_dark 0x7f0602f1
 int color primary_dark_material_light 0x7f0602f2
 int color primary_material_dark 0x7f0602f3
 int color primary_material_light 0x7f0602f4
+int color primary_orange 0x7f060307
 int color primary_text_default_material_dark 0x7f0602f5
 int color primary_text_default_material_light 0x7f0602f6
 int color primary_text_disabled_material_dark 0x7f0602f7
@@ -2113,6 +2114,7 @@ int color switch_thumb_material_dark 0x7f060301
 int color switch_thumb_material_light 0x7f060302
 int color switch_thumb_normal_material_dark 0x7f060303
 int color switch_thumb_normal_material_light 0x7f060304
+int color tarefas_semana_background 0x7f060308
 int color tooltip_background_dark 0x7f060305
 int color tooltip_background_light 0x7f060306
 int dimen abc_action_bar_content_inset_material 0x7f070000
@@ -3607,6 +3609,7 @@ int id todasButton 0x7f0901ef
 int id toggle 0x7f0901f0
 int id top 0x7f0901f1
 int id topPanel 0x7f0901f2
+int id totalTarefasNaSemana 0x7f090218
 int id touch_outside 0x7f0901f3
 int id transitionToEnd 0x7f0901f4
 int id transitionToStart 0x7f0901f5
@@ -4048,6 +4051,7 @@ int string titulo_historico 0x7f1000c6
 int string titulo_notificacao_foco 0x7f1000c7
 int string titulo_notificacao_pausa 0x7f1000c8
 int string titulo_nova_tarefa 0x7f1000c9
+int string total_de_tarefas_essa_semana 0x7f1000cb
 int string ultima_semana 0x7f1000ca
 int style AlertDialog_AppCompat 0x7f110000
 int style AlertDialog_AppCompat_Light 0x7f110001

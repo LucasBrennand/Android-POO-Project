@@ -30,7 +30,7 @@ public class SessaoRepository {
         return dao.listarDeHoje(inicioDoDia);
     }
 
-    //Adicionado o metodo que vem do Dao
+    //Adicionado o método que vem do Dao
     @WorkerThread
     public List<Sessao> listaDaSemana(Instant inicioDaSemana){
         return dao.listaDaSemana(inicioDaSemana);
@@ -39,5 +39,11 @@ public class SessaoRepository {
     @WorkerThread
     public void inserir(Sessao sessao) {
         dao.inserir(sessao);
+    }
+
+    //Adicionado o método que vem do Dao
+    @WorkerThread
+    public int countSessoesSemana(Instant inicioDaSemana){
+        return dao.countSessoesSemana(inicioDaSemana);
     }
 }

@@ -12,6 +12,9 @@ import br.ufpe.cin.focuszone.domain.Sessao;
 
 @Dao
 public interface SessaoDao {
+    //Essa variável vai contar o total de sessões da semana até hoje
+    @Query("SELECT COUNT(*) FROM sessoes WHERE iniciadaEm >= :inicioDaSemana")
+    int countSessoesSemana(Instant inicioDaSemana);
 
     @Insert
     void inserir(Sessao sessao);
@@ -22,8 +25,9 @@ public interface SessaoDao {
     @Query("SELECT * FROM sessoes WHERE iniciadaEm >= :inicioDoDia ORDER BY iniciadaEm DESC")
     List<Sessao> listarDeHoje(Instant inicioDoDia);
 
-    // Filtra o historico baseado nos ultimos 7 dias
+    // Filtra o historico baseado nos últimos 7 dias
     // :inicioDaSemana pega todos valores desde esse dia até hoje
     @Query("SELECT * FROM sessoes WHERE iniciadaEm >= :inicioDaSemana ORDER BY iniciadaEm DESC")
     List<Sessao> listaDaSemana(Instant inicioDaSemana);
+
 }

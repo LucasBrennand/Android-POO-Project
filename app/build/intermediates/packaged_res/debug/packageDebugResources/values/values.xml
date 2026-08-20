@@ -9,6 +9,8 @@
     </string-array>
     <color name="focusPrimary">#FF6F00</color>
     <color name="ic_launcher_background">#3DDC84</color>
+    <color name="primary_orange">#b3590b</color>
+    <color name="tarefas_semana_background">#dedede</color>
     <string name="acao_pausar">Pausar</string>
     <string name="acao_retomar">Retomar</string>
     <string name="app_name">FocusZone</string>
@@ -45,6 +47,7 @@
     <string name="titulo_notificacao_foco">FocusZone</string>
     <string name="titulo_notificacao_pausa">Hora da pausa!</string>
     <string name="titulo_nova_tarefa">Nova tarefa</string>
+    <string name="total_de_tarefas_essa_semana">Total de Tarefas essa Semana:</string>
     <string name="ultima_semana">Ultima Semana</string>
     <style name="Base.Theme.FocusZone" parent="Theme.Material3.DayNight.NoActionBar">
         

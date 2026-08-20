@@ -3,6 +3,7 @@ package br.ufpe.cin.focuszone.ui.historico;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -25,6 +26,7 @@ public class HistoricoActivity extends AppCompatActivity {
 
     private SessaoAdapter adapter;
     private SessaoRepository sessaoRepository;
+    private TextView totalTarefasSemana;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +41,16 @@ public class HistoricoActivity extends AppCompatActivity {
         adapter = new SessaoAdapter(sessoes);
         historicoRecyclerView.setAdapter(adapter);
 
+        totalTarefasSemana = findViewById(R.id.totalTarefasNaSemana);
+
         sessaoRepository = new SessaoRepository(this);
         carregarSessoes(1);
+        carregarTotalSemana();
 
         Button hojeButton = findViewById(R.id.hojeButton);
         Button todasButton = findViewById(R.id.todasButton);
         Button semanaButton = findViewById(R.id.ultimaSemanaButton);
-        // Cada botão tem um numero int e o carregarSessoes vai executar baseada nesse número
+        // Cada botão tem um número int e o carregarSessoes vai executar baseada nesse número
         // 1 - Hoje
         // 2 - Ultima Semana
         // 3 - Todos
@@ -96,5 +101,17 @@ public class HistoricoActivity extends AppCompatActivity {
     //Metodo para pegar ultimo 7 dias
     private Instant inicioDaSemana(){
         return LocalDate.now().minusDays(7).atStartOfDay(ZoneId.systemDefault()).toInstant();
+    }
+
+    //Metodo para exibir a quantidade de tarefas na semana
+    private void carregarTotalSemana(){
+        new Thread(() -> {
+            int total = sessaoRepository.countSessoesSemana(inicioDaSemana());
+            runOnUiThread(() -> {
+                if (totalTarefasSemana != null){
+                    totalTarefasSemana.setText("Total de Tarefas esta semana: "+total);
+                }
+            });
+        }).start();
     }
 }

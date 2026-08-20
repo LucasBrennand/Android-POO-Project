@@ -33,7 +33,7 @@ public class SessaoViewHolder extends RecyclerView.ViewHolder {
 
     void bind(Sessao sessao) {
         tituloSessaoText.setText(sessao.getTarefaTitulo());
-        duracaoSessaoText.setText(sessao.getDuracaoMinutos() + "minutos");
+        duracaoSessaoText.setText(sessao.getDuracaoMinutos() + " minutos");
         //Se existir a tarefa, pegue a suas informaçoes
         if (sessao.getIniciadaEm() != null){
             Date dataInicio = Date.from(sessao.getIniciadaEm());

@@ -70,6 +70,33 @@ public final class SessaoDao_Impl implements SessaoDao {
   }
 
   @Override
+  public int countSessoesSemana(final Instant inicioDaSemana) {
+    final String _sql = "SELECT COUNT(*) FROM sessoes WHERE iniciadaEm >= ?";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    final Long _tmp = InstantConverter.fromInstant(inicioDaSemana);
+    if (_tmp == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindLong(_argIndex, _tmp);
+    }
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _result;
+      if (_cursor.moveToFirst()) {
+        _result = _cursor.getInt(0);
+      } else {
+        _result = 0;
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
   public List<Sessao> listarTodas() {
     final String _sql = "SELECT * FROM sessoes ORDER BY iniciadaEm DESC";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);

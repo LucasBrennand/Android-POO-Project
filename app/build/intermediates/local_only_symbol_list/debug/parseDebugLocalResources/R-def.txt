@@ -3,6 +3,8 @@ local
 array opcoes_ciclos
 color focusPrimary
 color ic_launcher_background
+color primary_orange
+color tarefas_semana_background
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 id adicionarTarefaButton
@@ -33,6 +35,7 @@ id tituloConfiguracaoText
 id tituloHistoricoText
 id tituloSessaoText
 id todasButton
+id totalTarefasNaSemana
 id ultimaSemanaButton
 layout activity_configuracao
 layout activity_historico
@@ -78,6 +81,7 @@ string titulo_historico
 string titulo_notificacao_foco
 string titulo_notificacao_pausa
 string titulo_nova_tarefa
+string total_de_tarefas_essa_semana
 string ultima_semana
 style Base.Theme.FocusZone
 style Theme.FocusZone
