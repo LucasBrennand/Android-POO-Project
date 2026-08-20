@@ -23,7 +23,7 @@ public class TarefaRepository {
         return dao.listarTodas();
     }
 
-    //Adionando o metodo do dao de filtrar
+    //Acionando o método do dao de filtrar
     public LiveData<List<Tarefa>> buscarPorTitulo(String titulo){
         return dao.buscarPorTitulo(titulo);
     }

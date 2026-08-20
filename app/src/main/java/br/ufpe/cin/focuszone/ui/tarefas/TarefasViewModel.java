@@ -19,7 +19,7 @@ public class TarefasViewModel extends ViewModel {
 
     public TarefasViewModel(@NonNull TarefaRepository repository) {
         this.repository = repository;
-        //Utilizamos o Transformations.switchMap para que ele observe as alterações do titulo buscado, depois fazemos uma condição para mostrar o titulo que foi buscado ou todos os titulos se o input estiver vazio
+        //Utilizamos o Transformations.switchMap para que ele observe as alterações do título buscado, depois fazemos uma condição para mostrar o título que foi buscado ou todos os títulos se o input estiver vazio
         this.tarefas = Transformations.switchMap(tituloBusca, titulo -> {
             if (titulo == null || titulo.trim().isEmpty()){
                 return repository.listarTodas();

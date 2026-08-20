@@ -3255,6 +3255,7 @@ id currentState
 id custom
 id customPanel
 id cut
+id dataSessaoText
 id date_picker_actions
 id decelerate
 id decelerateAndComplete
@@ -3286,6 +3287,7 @@ id dragUp
 id dropdown_menu
 id duracaoFocoLabel
 id duracaoFocoSeekBar
+id duracaoSessaoText
 id easeIn
 id easeInOut
 id easeOut
@@ -3601,6 +3603,7 @@ id titleDividerNoCustom
 id title_template
 id tituloConfiguracaoText
 id tituloHistoricoText
+id tituloSessaoText
 id todasButton
 id toggle
 id top

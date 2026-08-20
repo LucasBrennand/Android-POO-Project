@@ -11,8 +11,10 @@ id ciclosLabel
 id ciclosSpinner
 id compartilharButton
 id configuracaoButton
+id dataSessaoText
 id duracaoFocoLabel
 id duracaoFocoSeekBar
+id duracaoSessaoText
 id editTextInput
 id historicoButton
 id historicoRecyclerView
@@ -29,6 +31,7 @@ id tarefasRecyclerView
 id tempoDisplay
 id tituloConfiguracaoText
 id tituloHistoricoText
+id tituloSessaoText
 id todasButton
 id ultimaSemanaButton
 layout activity_configuracao

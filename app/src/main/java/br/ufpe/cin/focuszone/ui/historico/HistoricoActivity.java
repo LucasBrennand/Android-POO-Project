@@ -80,6 +80,7 @@ public class HistoricoActivity extends AppCompatActivity {
             }
             runOnUiThread(() -> {
                 sessoes.clear();
+                assert sessoesDoBanco != null;
                 sessoes.addAll(sessoesDoBanco);
                 adapter.notifyDataSetChanged();
             });
