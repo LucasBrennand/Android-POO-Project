@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -26,6 +27,7 @@ public class TarefasActivity extends AppCompatActivity {
     private TarefasViewModel viewModel;
     private TarefasAdapter adapter;
     private EditText buscaTitulo;
+    private TextView tarefasProgressoText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +112,25 @@ public class TarefasActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
 
+            }
+        });
+
+        tarefasProgressoText = findViewById(R.id.tarefas_progresso);
+        viewModel.getTarefas().observe(this, listaDeTarefas -> {
+            adapter.submitList(listaDeTarefas);
+
+            if (listaDeTarefas != null){
+                int total = listaDeTarefas.size();
+                int concluidas = 0;
+
+                //Cada vez que uma tarefa for concluida, atualiza o progresso
+                for (int i = 0; i < listaDeTarefas.size(); i++) {
+                    if (listaDeTarefas.get(i).isConcluida()){
+                        concluidas++;
+                    }
+                }
+                String progresso = concluidas + " de " + total + " tarefas concluídas";
+                tarefasProgressoText.setText(progresso);
             }
         });
     }

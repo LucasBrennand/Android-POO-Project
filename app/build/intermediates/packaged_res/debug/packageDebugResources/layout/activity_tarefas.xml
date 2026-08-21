@@ -10,32 +10,44 @@
         android:id="@+id/adicionarTarefaButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
         android:text="@string/btn_adicionar_tarefa"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!--Adiconado o editTextInput-->
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/editTextInput"
         android:layout_width="0dp"
-        android:hint="@string/buscar_titulo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/adicionarTarefaButton"
-        tools:layout_editor_absoluteX="24dp" />
+        android:layout_marginTop="16dp"
+        android:hint="@string/buscar_titulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/adicionarTarefaButton" />
 
+    <TextView
+        android:id="@+id/tarefas_progresso"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/curved_corners"
+        android:padding="7dp"
+        android:text="@string/tarefas_concluidas"
+        android:textAlignment="center"
+        android:textColor="@color/primary_orange"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextInput" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tarefasRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/editTextInput"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tarefas_progresso" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

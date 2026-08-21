@@ -3010,6 +3010,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable curved_corners
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
@@ -3108,6 +3109,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable rounded_corners
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -3582,6 +3584,7 @@ id tag_unhandled_key_listeners
 id tag_window_insets_animation_callback
 id tarefasButton
 id tarefasRecyclerView
+id tarefas_progresso
 id tempoDisplay
 id text
 id text2
@@ -4047,6 +4050,7 @@ string side_sheet_accessibility_pane_title
 string side_sheet_behavior
 string status_bar_notification_info_overflow
 string tarefa_ja_existe
+string tarefas_concluidas
 string titulo_compartilhar
 string titulo_configuracao
 string titulo_historico

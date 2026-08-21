@@ -5,8 +5,10 @@ color focusPrimary
 color ic_launcher_background
 color primary_orange
 color tarefas_semana_background
+drawable curved_corners
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable rounded_corners
 id adicionarTarefaButton
 id cancelarButton
 id ciclosLabel
@@ -30,6 +32,7 @@ id salvarConfiguracaoButton
 id somAtivadoSwitch
 id tarefasButton
 id tarefasRecyclerView
+id tarefas_progresso
 id tempoDisplay
 id tituloConfiguracaoText
 id tituloHistoricoText
@@ -76,6 +79,7 @@ string msg_titulo_vazio
 string notif_foco_andamento
 string notif_foco_pausado
 string tarefa_ja_existe
+string tarefas_concluidas
 string titulo_compartilhar
 string titulo_configuracao
 string titulo_historico

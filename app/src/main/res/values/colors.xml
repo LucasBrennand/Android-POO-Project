@@ -3,5 +3,5 @@
     <color name="ic_launcher_background">#3DDC84</color>
     <color name="tarefas_semana_background">#dedede</color>
     <color name="focusPrimary">#FF6F00</color>
-    <color name="primary_orange">#b3590b</color>
+    <color name="primary_orange">#FF6F00</color>
 </resources>
