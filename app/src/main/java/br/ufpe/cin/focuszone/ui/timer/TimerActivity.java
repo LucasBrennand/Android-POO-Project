@@ -13,6 +13,7 @@ import java.util.Locale;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
@@ -100,7 +101,21 @@ public class TimerActivity extends AppCompatActivity {
             }
         });
 
-        cancelarButton.setOnClickListener(v -> viewModel.cancelarContagem());
+        //Alert para confirmar e cancelar o timer
+        cancelarButton.setOnClickListener(v -> {
+//            viewModel.cancelarContagem();
+            new AlertDialog.Builder(TimerActivity.this)
+                    .setTitle(R.string.btn_cancelar_foco)
+                    .setPositiveButton(R.string.btn_confirmar, (dialog, which) -> {
+                        viewModel.cancelarContagem();
+                    })
+                    .setNegativeButton(R.string.btn_cancelar, (dialog, which) -> {
+                        dialog.dismiss();
+                    })
+                    .setOnCancelListener(dialog -> {
+                        dialog.dismiss();
+                    }).show();
+        });
 
         configuracaoButton.setOnClickListener(v ->
                 startActivity(new Intent(this, ConfiguracaoActivity.class)));

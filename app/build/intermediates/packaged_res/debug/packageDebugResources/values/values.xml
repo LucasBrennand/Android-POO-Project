@@ -17,7 +17,7 @@
     <string name="btn_adicionar">Adicionar</string>
     <string name="btn_adicionar_tarefa">Adicionar tarefa</string>
     <string name="btn_cancelar">Cancelar</string>
-    <string name="btn_cancelar_foco">Cancelar foco</string>
+    <string name="btn_cancelar_foco">Cancelar foco?</string>
     <string name="btn_compartilhar">Compartilhar</string>
     <string name="btn_configuracoes">Configurações</string>
     <string name="btn_confirmar">Confirmar</string>

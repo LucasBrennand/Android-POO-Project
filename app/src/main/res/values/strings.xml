@@ -23,7 +23,7 @@
     <string name="btn_confirmar">Confirmar</string>
     <string name="btn_cancelar">Cancelar</string>
     <string name="msg_titulo_vazio">Informe um título para a tarefa</string>
-    <string name="btn_cancelar_foco">Cancelar foco</string>
+    <string name="btn_cancelar_foco">Cancelar foco?</string>
     <string name="canal_timer_nome">Timer de foco</string>
     <string name="canal_timer_descricao">Notificações de fim de ciclo de foco</string>
     <string name="titulo_notificacao_pausa">Hora da pausa!</string>
