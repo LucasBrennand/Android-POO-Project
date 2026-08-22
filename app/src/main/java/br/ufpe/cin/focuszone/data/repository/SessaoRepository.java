@@ -20,6 +20,8 @@ public class SessaoRepository {
         dao = FocusZoneDatabase.getInstance(context).sessaoDao();
     }
 
+
+    //Todos os métodos criados no SessaoDao também vão ser implementados aqui
     @WorkerThread
     public List<Sessao> listarTodas() {
         return dao.listarTodas();
@@ -39,6 +41,12 @@ public class SessaoRepository {
     @WorkerThread
     public void inserir(Sessao sessao) {
         dao.inserir(sessao);
+    }
+
+    @WorkerThread
+    public void remover(Sessao sessao){
+        //Pegamos o ID de sessão para remover
+        dao.remover(sessao.getId());
     }
 
     //Adicionado o método que vem do Dao

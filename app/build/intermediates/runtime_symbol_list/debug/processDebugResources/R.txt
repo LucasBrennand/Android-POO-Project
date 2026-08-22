@@ -4054,6 +4054,7 @@ int string tarefa_ja_existe 0x7f1000c6
 int string tarefas_concluidas 0x7f1000c7
 int string titulo_compartilhar 0x7f1000c8
 int string titulo_configuracao 0x7f1000c9
+int string titulo_confirmar_exclusao 0x7f1000d0
 int string titulo_historico 0x7f1000ca
 int string titulo_notificacao_foco 0x7f1000cb
 int string titulo_notificacao_pausa 0x7f1000cc

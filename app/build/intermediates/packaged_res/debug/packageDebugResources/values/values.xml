@@ -47,6 +47,7 @@
     <string name="tarefas_concluidas">Nenhuma Tarefa Adicionada</string>
     <string name="titulo_compartilhar">Compartilhar sessão</string>
     <string name="titulo_configuracao">Configurações</string>
+    <string name="titulo_confirmar_exclusao">Deseja remover essa sessão do histórico?</string>
     <string name="titulo_historico">Histórico</string>
     <string name="titulo_notificacao_foco">FocusZone</string>
     <string name="titulo_notificacao_pausa">Hora da pausa!</string>

@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -46,6 +49,54 @@ public class HistoricoActivity extends AppCompatActivity {
         sessaoRepository = new SessaoRepository(this);
         carregarSessoes(1);
         carregarTotalSemana();
+
+        ItemTouchHelper.SimpleCallback swipeCallback = new ItemTouchHelper.SimpleCallback(
+                0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView,
+                                  @NonNull RecyclerView.ViewHolder viewHolder,
+                                  @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                int position = viewHolder.getBindingAdapterPosition();
+
+                if (position == RecyclerView.NO_POSITION || position >= sessoes.size()) {
+                    return;
+                }
+
+                Sessao sessaoParaRemover = sessoes.get(position);
+
+                //Implementado uma confirmação antes de remover a sessão
+                new AlertDialog.Builder(HistoricoActivity.this)
+                        .setTitle(R.string.titulo_confirmar_exclusao)
+                        .setPositiveButton(R.string.btn_cancelar, (dialog, which) -> {
+                            // Confirmação: remove do banco de dados e atualiza a lista
+                            new Thread(() -> {
+                                sessaoRepository.remover(sessaoParaRemover);
+
+                                runOnUiThread(() -> {
+                                    sessoes.remove(position);
+                                    adapter.notifyItemRemoved(position);
+                                    carregarTotalSemana();
+                                });
+                            }).start();
+                        })
+                        .setNegativeButton(R.string.btn_cancelar, (dialog, which) -> {
+                            // Cancelamento: restaura o item na tela
+                            adapter.notifyItemChanged(position);
+                        })
+                        .setOnCancelListener(dialog -> {
+                            // Cancelamento: restaura o item na tela
+                            adapter.notifyItemChanged(position);
+                        })
+                        .show();
+            }
+        };
+        new ItemTouchHelper(swipeCallback).attachToRecyclerView(historicoRecyclerView);
 
         Button hojeButton = findViewById(R.id.hojeButton);
         Button todasButton = findViewById(R.id.todasButton);

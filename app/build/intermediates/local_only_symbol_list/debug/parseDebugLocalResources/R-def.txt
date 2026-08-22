@@ -84,6 +84,7 @@ string tarefa_ja_existe
 string tarefas_concluidas
 string titulo_compartilhar
 string titulo_configuracao
+string titulo_confirmar_exclusao
 string titulo_historico
 string titulo_notificacao_foco
 string titulo_notificacao_pausa

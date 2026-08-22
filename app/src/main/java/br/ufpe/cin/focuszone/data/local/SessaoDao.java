@@ -1,6 +1,5 @@
 package br.ufpe.cin.focuszone.data.local;
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -24,6 +23,11 @@ public interface SessaoDao {
 
     @Query("SELECT * FROM sessoes WHERE iniciadaEm >= :inicioDoDia ORDER BY iniciadaEm DESC")
     List<Sessao> listarDeHoje(Instant inicioDoDia);
+
+    //Vai ser usado para remover as tarefas do histórico
+    //Vamos remover a sessão através do seu ID
+    @Query("DELETE FROM sessoes WHERE id = :id")
+    void remover(long id);
 
     // Filtra o historico baseado nos últimos 7 dias
     // :inicioDaSemana pega todos valores desde esse dia até hoje

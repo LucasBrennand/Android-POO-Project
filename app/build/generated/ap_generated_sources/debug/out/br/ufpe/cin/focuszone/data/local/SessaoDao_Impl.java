@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.room.EntityInsertionAdapter;
 import androidx.room.RoomDatabase;
 import androidx.room.RoomSQLiteQuery;
+import androidx.room.SharedSQLiteStatement;
 import androidx.room.util.CursorUtil;
 import androidx.room.util.DBUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
@@ -26,6 +27,8 @@ public final class SessaoDao_Impl implements SessaoDao {
   private final RoomDatabase __db;
 
   private final EntityInsertionAdapter<Sessao> __insertionAdapterOfSessao;
+
+  private final SharedSQLiteStatement __preparedStmtOfRemover;
 
   public SessaoDao_Impl(@NonNull final RoomDatabase __db) {
     this.__db = __db;
@@ -55,6 +58,14 @@ public final class SessaoDao_Impl implements SessaoDao {
         statement.bindLong(5, _tmp_1);
       }
     };
+    this.__preparedStmtOfRemover = new SharedSQLiteStatement(__db) {
+      @Override
+      @NonNull
+      public String createQuery() {
+        final String _query = "DELETE FROM sessoes WHERE id = ?";
+        return _query;
+      }
+    };
   }
 
   @Override
@@ -66,6 +77,25 @@ public final class SessaoDao_Impl implements SessaoDao {
       __db.setTransactionSuccessful();
     } finally {
       __db.endTransaction();
+    }
+  }
+
+  @Override
+  public void remover(final long id) {
+    __db.assertNotSuspendingTransaction();
+    final SupportSQLiteStatement _stmt = __preparedStmtOfRemover.acquire();
+    int _argIndex = 1;
+    _stmt.bindLong(_argIndex, id);
+    try {
+      __db.beginTransaction();
+      try {
+        _stmt.executeUpdateDelete();
+        __db.setTransactionSuccessful();
+      } finally {
+        __db.endTransaction();
+      }
+    } finally {
+      __preparedStmtOfRemover.release(_stmt);
     }
   }
 
