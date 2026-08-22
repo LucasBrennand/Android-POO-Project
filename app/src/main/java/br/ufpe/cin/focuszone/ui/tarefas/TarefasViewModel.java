@@ -45,8 +45,13 @@ public class TarefasViewModel extends ViewModel {
     }
 
     public void alternarConcluida(Tarefa tarefa) {
-        tarefa.setConcluida(!tarefa.isConcluida());
-        new Thread(() -> repository.atualizar(tarefa)).start();
+        new Thread(() -> {
+            Tarefa atualizada = new Tarefa(tarefa.getTitulo());
+            atualizada.setId(tarefa.getId());
+            atualizada.setConcluida(!tarefa.isConcluida());
+
+            repository.atualizar(atualizada);
+        }).start();
     }
 
     //Esse metodo é para definir o título que vamos buscar

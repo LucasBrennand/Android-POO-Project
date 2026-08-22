@@ -16,7 +16,7 @@ public class PendenteViewHolder extends TarefaViewHolder {
     @Override
     void bind(Tarefa tarefa, TarefasAdapter.OnTarefaClickListener listener) {
         tituloText.setText(tarefa.getTitulo());
-        tituloText.setPaintFlags(tituloText.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
+        tituloText.setPaintFlags(tituloText.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
         itemView.setOnClickListener(v -> listener.onTarefaClick(tarefa));
     }
 }

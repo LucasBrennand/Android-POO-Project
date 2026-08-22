@@ -3214,6 +3214,7 @@ int id bounce 0x7f090062
 int id bounceBoth 0x7f090063
 int id bounceEnd 0x7f090064
 int id bounceStart 0x7f090065
+int id buscaInputLayout 0x7f09021c
 int id buttonPanel 0x7f090066
 int id cache_measures 0x7f090067
 int id callMeasure 0x7f090068
@@ -3316,6 +3317,7 @@ int id fill 0x7f0900c6
 int id fill_horizontal 0x7f0900c7
 int id fill_vertical 0x7f0900c8
 int id filled 0x7f0900c9
+int id filtrosLayout 0x7f09021d
 int id fitCenter 0x7f0900ca
 int id fitEnd 0x7f0900cb
 int id fitStart 0x7f0900cc

@@ -10,6 +10,7 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable rounded_corners
 id adicionarTarefaButton
+id buscaInputLayout
 id cancelarButton
 id ciclosLabel
 id ciclosSpinner
@@ -22,6 +23,7 @@ id duracaoPausaLabel
 id duracaoPausaSeekBar
 id duracaoSessaoText
 id editTextInput
+id filtrosLayout
 id historicoButton
 id historicoRecyclerView
 id hojeButton

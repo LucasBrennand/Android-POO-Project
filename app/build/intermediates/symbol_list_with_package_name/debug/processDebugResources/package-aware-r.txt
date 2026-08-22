@@ -3215,6 +3215,7 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id buscaInputLayout
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -3317,6 +3318,7 @@ id fill
 id fill_horizontal
 id fill_vertical
 id filled
+id filtrosLayout
 id fitCenter
 id fitEnd
 id fitStart
