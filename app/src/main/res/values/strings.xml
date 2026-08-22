@@ -20,6 +20,7 @@
     <string name="btn_adicionar_tarefa">Adicionar tarefa</string>
     <string name="titulo_nova_tarefa">Nova tarefa</string>
     <string name="btn_adicionar">Adicionar</string>
+    <string name="btn_confirmar">Confirmar</string>
     <string name="btn_cancelar">Cancelar</string>
     <string name="msg_titulo_vazio">Informe um título para a tarefa</string>
     <string name="btn_cancelar_foco">Cancelar foco</string>
@@ -39,4 +40,5 @@
     <string name="total_de_tarefas_essa_semana">Total de Tarefas essa Semana:</string>
     <string name="tarefa_ja_existe">Essa tarefa já existe</string>
     <string name="tarefas_concluidas">Nenhuma Tarefa Adicionada</string>
+    <string name="confirmar_remover_tarefa">Deseja remover essa Tarefa?</string>
 </resources>

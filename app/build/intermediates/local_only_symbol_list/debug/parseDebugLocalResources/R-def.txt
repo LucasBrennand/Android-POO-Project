@@ -57,6 +57,7 @@ string btn_cancelar
 string btn_cancelar_foco
 string btn_compartilhar
 string btn_configuracoes
+string btn_confirmar
 string btn_historico
 string btn_hoje
 string btn_iniciar
@@ -66,6 +67,7 @@ string btn_todas
 string buscar_titulo
 string canal_timer_descricao
 string canal_timer_nome
+string confirmar_remover_tarefa
 string hint_nome_tarefa
 string label_ciclos
 string label_duracao_foco

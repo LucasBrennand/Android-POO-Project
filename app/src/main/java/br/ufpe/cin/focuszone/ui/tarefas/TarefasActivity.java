@@ -58,11 +58,23 @@ public class TarefasActivity extends AppCompatActivity {
                 return false;
             }
 
+            //Adicionado uma alert para confirmar a exclusão da tarefa
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getBindingAdapterPosition();
                 Tarefa tarefa = adapter.getCurrentList().get(position);
-                viewModel.remover(tarefa);
+//                viewModel.remover(tarefa);
+                new AlertDialog.Builder(TarefasActivity.this)
+                        .setTitle(R.string.confirmar_remover_tarefa)
+                        .setPositiveButton(R.string.btn_confirmar, (dialog, which) -> {
+                            viewModel.remover(tarefa);
+                        })
+                        .setNegativeButton(R.string.btn_cancelar, (dialog, which) -> {
+                            adapter.notifyItemChanged(position);
+                        })
+                        .setOnCancelListener(dialog -> {
+                            adapter.notifyItemChanged(position);
+                        }).show();
             }
         };
         new ItemTouchHelper(swipeCallback).attachToRecyclerView(tarefasRecyclerView);

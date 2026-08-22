@@ -25,12 +25,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/adicionarTarefaButton" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tarefas_progresso"
         android:layout_width="290dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:background="@drawable/curved_corners"
+        android:clickable="false"
+        android:focusable="false"
         android:padding="7dp"
         android:text="@string/tarefas_concluidas"
         android:textAlignment="center"
@@ -40,6 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextInput" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tarefasRecyclerView"
         android:layout_width="0dp"
