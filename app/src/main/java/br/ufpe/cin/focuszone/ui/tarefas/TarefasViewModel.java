@@ -44,12 +44,6 @@ public class TarefasViewModel extends ViewModel {
         tarefaAdicionada.setValue(false);
     }
 
-    public void alternarTarefaAdicionada(Tarefa tarefa){
-        tarefa.setConcluida(!tarefa.isConcluida());
-        new Thread(() -> {
-            repository.atualizar(tarefa);
-        }).start();
-    }
     public void alternarConcluida(Tarefa tarefa) {
         tarefa.setConcluida(!tarefa.isConcluida());
         new Thread(() -> repository.atualizar(tarefa)).start();

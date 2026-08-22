@@ -46,8 +46,6 @@ public class TarefasActivity extends AppCompatActivity {
         adapter = new TarefasAdapter(this::onTarefaClicada);
         tarefasRecyclerView.setAdapter(adapter);
 
-        viewModel.getTarefas().observe(this, adapter::submitList);
-
         ItemTouchHelper.SimpleCallback swipeCallback = new ItemTouchHelper.SimpleCallback(
                 0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
 

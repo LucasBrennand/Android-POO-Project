@@ -73,7 +73,7 @@ public class HistoricoActivity extends AppCompatActivity {
                 //Implementado uma confirmação antes de remover a sessão
                 new AlertDialog.Builder(HistoricoActivity.this)
                         .setTitle(R.string.titulo_confirmar_exclusao)
-                        .setPositiveButton(R.string.btn_cancelar, (dialog, which) -> {
+                        .setPositiveButton(R.string.btn_confirmar, (dialog, which) -> {
                             // Confirmação: remove do banco de dados e atualiza a lista
                             new Thread(() -> {
                                 sessaoRepository.remover(sessaoParaRemover);
@@ -136,8 +136,9 @@ public class HistoricoActivity extends AppCompatActivity {
             }
             runOnUiThread(() -> {
                 sessoes.clear();
-                assert sessoesDoBanco != null;
-                sessoes.addAll(sessoesDoBanco);
+                if (sessoesDoBanco != null) {
+                    sessoes.addAll(sessoesDoBanco);
+                }
                 adapter.notifyDataSetChanged();
             });
         }).start();

@@ -75,7 +75,6 @@ public class TimerActivity extends AppCompatActivity {
                     iniciarButton.setText(R.string.btn_iniciar);
                 }
             }
-            this.andamento = andamento;
         });
 
         //Isso vai ser usado para armazenar a tarefa
@@ -93,6 +92,7 @@ public class TimerActivity extends AppCompatActivity {
             } else {
                 // Se está parado ou pausado, valida o nome antes de iniciar ou retomar
                 String nome = nomeTarefaInput.getText().toString().trim();
+                String nomeAtual = viewModel.getNomeTarefa().toString().trim();
                 if (nome.isEmpty()) {
                     Snackbar.make(v, R.string.msg_informe_tarefa, Snackbar.LENGTH_SHORT).show();
                 } else {

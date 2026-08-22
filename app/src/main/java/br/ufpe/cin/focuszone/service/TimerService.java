@@ -117,7 +117,8 @@ public class TimerService extends Service {
         if (this.tempoRestanteAtual == null){
             this.tempoRestanteAtual = 0L;
         }
-        long duracaoMillis = configuracaoRepository.getDuracaoFocoMinutos() * 60_000L;
+        long duracaoMinutos = (tipoCicloAtual == TimerStateHolder.TIPO_FOCO) ? configuracaoRepository.getDuracaoFocoMinutos() : configuracaoRepository.getDuracaoPausaMinutos();
+        long duracaoMillis = duracaoMinutos * 60_000L;
         if (tempoRestanteAtual > 0 && tempoRestanteAtual < duracaoMillis){
             duracaoMillis = tempoRestanteAtual;
         }
