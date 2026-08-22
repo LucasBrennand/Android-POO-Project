@@ -16,6 +16,7 @@ public class TarefasViewModel extends ViewModel {
     private final TarefaRepository repository;
     private final LiveData<List<Tarefa>> tarefas;
     private final MutableLiveData<String> tituloBusca = new MutableLiveData<>("");
+    private final MutableLiveData<Boolean> tarefaAdicionada = new MutableLiveData<>(false);
 
     public TarefasViewModel(@NonNull TarefaRepository repository) {
         this.repository = repository;
@@ -34,12 +35,27 @@ public class TarefasViewModel extends ViewModel {
         return tarefas;
     }
 
+    public LiveData<Boolean> getTarefaAdicionada(){
+        return tarefaAdicionada;
+    }
+
+    //Quando a tarefa for consumida, execute esse método
+    public void tarefaAdicionada(){
+        tarefaAdicionada.setValue(false);
+    }
+
+    public void alternarTarefaAdicionada(Tarefa tarefa){
+        tarefa.setConcluida(!tarefa.isConcluida());
+        new Thread(() -> {
+            repository.atualizar(tarefa);
+        }).start();
+    }
     public void alternarConcluida(Tarefa tarefa) {
         tarefa.setConcluida(!tarefa.isConcluida());
         new Thread(() -> repository.atualizar(tarefa)).start();
     }
 
-    //Esse metodo é pra definir o titulo que vamos buscar
+    //Esse metodo é para definir o título que vamos buscar
     public void setTituloBusca(String titulo){
         tituloBusca.setValue(titulo);
     }
@@ -49,6 +65,9 @@ public class TarefasViewModel extends ViewModel {
     }
 
     public void adicionar(String titulo) {
-        new Thread(() -> repository.inserir(new Tarefa(titulo))).start();
+        new Thread(() -> {
+            repository.inserir(new Tarefa(titulo));
+            tarefaAdicionada.setValue(true);
+        }).start();
     }
 }

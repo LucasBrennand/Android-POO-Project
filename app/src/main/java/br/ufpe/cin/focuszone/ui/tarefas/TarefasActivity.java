@@ -145,6 +145,17 @@ public class TarefasActivity extends AppCompatActivity {
                 tarefasProgressoText.setText(progresso);
             }
         });
+
+        viewModel.getTarefaAdicionada().observe(this, adicionada -> {
+            if (Boolean.TRUE.equals(adicionada)) {
+                Snackbar.make(
+                        findViewById(android.R.id.content),
+                        R.string.btn_adicionar_tarefa,
+                        Snackbar.LENGTH_SHORT
+                ).show();
+                viewModel.tarefaAdicionada();
+            }
+        });
     }
 
     private void onTarefaClicada(Tarefa tarefa) {
