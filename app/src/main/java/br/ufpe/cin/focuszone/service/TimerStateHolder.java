@@ -5,11 +5,17 @@ import androidx.lifecycle.MutableLiveData;
 
 public class TimerStateHolder {
 
+    //Vai representar o estado do ciclo atual
+    public static final int TIPO_FOCO = 1;
+    public static final int TIPO_PAUSA_CURTA = 2;
+
     private static TimerStateHolder instancia;
 
     private final MutableLiveData<Long> tempoRestanteMillis = new MutableLiveData<>(0L);
     private final MutableLiveData<Boolean> emAndamento = new MutableLiveData<>(false);
-    private MutableLiveData<String> nomeTarefa = new MutableLiveData<>(""); //Isso vai ser pra guardar o nome da tarefa quando fecha o app
+    private final MutableLiveData<String> nomeTarefa = new MutableLiveData<>("");
+    private final MutableLiveData<Integer> tipoCicloAtual = new MutableLiveData<>(TIPO_FOCO);
+    private final MutableLiveData<Integer> cicloAtual = new MutableLiveData<>(1);
 
     private TimerStateHolder() {
     }
@@ -33,23 +39,31 @@ public class TimerStateHolder {
         return nomeTarefa;
     }
 
-    public void atualizarNomeTarefa(String nome){
-        nomeTarefa.setValue(nome);
+    public LiveData<Integer> getTipoCicloAtual() {
+        return tipoCicloAtual;
     }
 
-    public static TimerStateHolder getInstancia() {
-        return instancia;
+    public LiveData<Integer> getCicloAtual() {
+        return cicloAtual;
     }
 
-    public static void setInstancia(TimerStateHolder instancia) {
-        TimerStateHolder.instancia = instancia;
+    public void atualizarNomeTarefa(String nome) {
+        nomeTarefa.postValue(nome);
     }
 
     public void atualizarTempoRestante(long millis) {
-        tempoRestanteMillis.setValue(millis);
+        tempoRestanteMillis.postValue(millis);
     }
 
     public void atualizarEmAndamento(boolean andamento) {
-        emAndamento.setValue(andamento);
+        emAndamento.postValue(andamento);
+    }
+
+    public void atualizarTipoCiclo(int tipo) {
+        tipoCicloAtual.postValue(tipo);
+    }
+
+    public void atualizarCicloAtual(int ciclo) {
+        cicloAtual.postValue(ciclo);
     }
 }

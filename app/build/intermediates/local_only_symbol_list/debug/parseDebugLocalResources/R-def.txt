@@ -18,6 +18,8 @@ id configuracaoButton
 id dataSessaoText
 id duracaoFocoLabel
 id duracaoFocoSeekBar
+id duracaoPausaLabel
+id duracaoPausaSeekBar
 id duracaoSessaoText
 id editTextInput
 id historicoButton
@@ -68,6 +70,7 @@ string buscar_titulo
 string canal_timer_descricao
 string canal_timer_nome
 string confirmar_remover_tarefa
+string duracao_pausa_curta
 string hint_nome_tarefa
 string label_ciclos
 string label_duracao_foco

@@ -19,4 +19,20 @@ public class ConfiguracaoRepository {
     public void salvarDuracaoFocoMinutos(int minutos) {
         store.salvarDuracaoFocoMinutos(minutos);
     }
+
+    public int getDuracaoPausaMinutos() {
+        return store.getDuracaoPausaMinutos();
+    }
+
+    public void salvarDuracaoPausaMinutos(int minutos) {
+        store.salvarDuracaoPausaMinutos(minutos);
+    }
+
+    public int getTotalCiclos() {
+        return store.getTotalCiclos();
+    }
+
+    public void salvarTotalCiclos(int ciclos) {
+        store.salvarTotalCiclos(ciclos);
+    }
 }

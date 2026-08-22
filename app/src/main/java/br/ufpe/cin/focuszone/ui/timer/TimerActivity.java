@@ -21,6 +21,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.snackbar.Snackbar;
 
 import br.ufpe.cin.focuszone.R;
+import br.ufpe.cin.focuszone.service.TimerStateHolder;
 import br.ufpe.cin.focuszone.ui.configuracao.ConfiguracaoActivity;
 import br.ufpe.cin.focuszone.ui.historico.HistoricoActivity;
 import br.ufpe.cin.focuszone.ui.tarefas.TarefasActivity;
@@ -125,6 +126,18 @@ public class TimerActivity extends AppCompatActivity {
 
         tarefasButton.setOnClickListener(v ->
                 startActivity(new Intent(this, TarefasActivity.class)));
+
+        //Atualiza o interface
+        viewModel.getTipoCicloAtual().observe(this, tipoCiclo -> {
+            if (tipoCiclo == TimerStateHolder.TIPO_PAUSA_CURTA) {
+                nomeTarefaInput.setEnabled(false);
+            } else {
+                nomeTarefaInput.setEnabled(true);
+            }
+        });
+        viewModel.getCicloAtual().observe(this, ciclo -> {
+            int totalCiclos = new br.ufpe.cin.focuszone.data.repository.ConfiguracaoRepository(this).getTotalCiclos();
+        });
     }
 
     @Override

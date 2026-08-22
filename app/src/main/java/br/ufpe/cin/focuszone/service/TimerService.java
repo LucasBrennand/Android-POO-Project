@@ -11,6 +11,7 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.CountDownTimer;
 import android.os.IBinder;
+import android.util.Log;
 
 import java.time.Instant;
 
@@ -30,13 +31,10 @@ public class TimerService extends Service {
     public static final String ACTION_PAUSAR = "br.ufpe.cin.focuszone.action.PAUSAR";
     public static final String ACTION_CANCELAR = "br.ufpe.cin.focuszone.action.CANCELAR";
     public static final String EXTRA_NOME_TAREFA = "nome_tarefa";
-
     public static final String ACTION_BROADCAST_PAUSAR = "br.ufpe.cin.focuszone.broadcast.PAUSAR";
-
     private static final String CHANNEL_ID = "focus_zone_timer";
     private static final int NOTIFICATION_ID = 2;
     private static final int NOTIFICATION_ID_FIM_FOCO = 1;
-
     private final TimerStateHolder stateHolder = TimerStateHolder.getInstance();
     private ConfiguracaoRepository configuracaoRepository;
     private SessaoRepository sessaoRepository;
@@ -44,6 +42,8 @@ public class TimerService extends Service {
     private String nomeTarefaAtual;
     private TimerActionReceiver actionReceiver;
     private Long tempoRestanteAtual; //Pega o tempo que falta
+    private int tipoCicloAtual = TimerStateHolder.TIPO_FOCO;
+    private int cicloAtual = 1;
 
     @Override
     public void onCreate() {
@@ -133,15 +133,46 @@ public class TimerService extends Service {
             @Override
             public void onFinish() {
                 stateHolder.atualizarTempoRestante(0L);
-                stateHolder.atualizarEmAndamento(false);
-                registrarSessao(true);
-                notificarFimDeFoco();
-                stopForeground(STOP_FOREGROUND_REMOVE);
-                stopSelf();
+                // Altera o ciclo
+                avancarProximoCiclo();
             }
         };
         stateHolder.atualizarEmAndamento(true);
         timerFoco.start();
+    }
+
+    private void avancarProximoCiclo() {
+        int totalCiclosConfigurados = configuracaoRepository.getTotalCiclos();
+        if (tipoCicloAtual == TimerStateHolder.TIPO_FOCO) {
+            registrarSessao(true);
+            notificarFimDeFoco();
+            // Muda para Pausa Curta pra manter o ciclo atual
+            tipoCicloAtual = TimerStateHolder.TIPO_PAUSA_CURTA;
+            stateHolder.atualizarTempoRestante(configuracaoRepository.getDuracaoPausaMinutos() * 60_000L);
+            iniciarContagem();
+        } else {
+            // Se Estavae em pausa, incrementa o ciclo
+            cicloAtual++;
+            if (cicloAtual <= totalCiclosConfigurados) {
+                tipoCicloAtual = TimerStateHolder.TIPO_FOCO;
+                stateHolder.atualizarTempoRestante(configuracaoRepository.getDuracaoFocoMinutos() * 60_000L);
+                iniciarContagem();
+            } else {
+                resetarEstadoCompleto();
+            }
+        }
+    }
+
+    private void resetarEstadoCompleto() {
+        tipoCicloAtual = TimerStateHolder.TIPO_FOCO;
+        cicloAtual = 1;
+        stateHolder.atualizarTipoCiclo(TimerStateHolder.TIPO_FOCO);
+        stateHolder.atualizarCicloAtual(1);
+        stateHolder.atualizarEmAndamento(false);
+        stateHolder.atualizarTempoRestante(configuracaoRepository.getDuracaoFocoMinutos() * 60_000L);
+        stateHolder.atualizarNomeTarefa("");
+        stopForeground(STOP_FOREGROUND_REMOVE);
+        stopSelf();
     }
 
     private void pausarContagem() {
@@ -220,4 +251,5 @@ public class TimerService extends Service {
             NotificationManagerCompat.from(this).notify(NOTIFICATION_ID_FIM_FOCO, builder.build());
         }
     }
+
 }

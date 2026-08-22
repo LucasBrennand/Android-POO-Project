@@ -3290,6 +3290,8 @@ int id dragUp 0x7f0900ae
 int id dropdown_menu 0x7f0900af
 int id duracaoFocoLabel 0x7f0900b0
 int id duracaoFocoSeekBar 0x7f0900b1
+int id duracaoPausaLabel 0x7f09021a
+int id duracaoPausaSeekBar 0x7f09021b
 int id duracaoSessaoText 0x7f0900b2
 int id easeIn 0x7f0900b3
 int id easeInOut 0x7f0900b4
@@ -3918,6 +3920,7 @@ int string character_counter_overflowed_content_description 0x7f10003e
 int string character_counter_pattern 0x7f10003f
 int string clear_text_end_icon_content_description 0x7f100040
 int string confirmar_remover_tarefa 0x7f100041
+int string duracao_pausa_curta 0x7f1000d2
 int string error_a11y_label 0x7f100042
 int string error_icon_content_description 0x7f100043
 int string exposed_dropdown_menu_content_description 0x7f100044

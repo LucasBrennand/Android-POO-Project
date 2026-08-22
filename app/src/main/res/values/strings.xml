@@ -43,4 +43,5 @@
     <string name="confirmar_remover_tarefa">Deseja remover essa Tarefa?</string>
     <string name="titulo_confirmar_exclusao">Deseja remover essa sessão do histórico?</string>
     <string name="tarefa_adicionada">Tarefa adicionada</string>
+    <string name="duracao_pausa_curta">Duração da Pausa Curta (minutos)</string>
 </resources>

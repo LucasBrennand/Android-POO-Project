@@ -2028,6 +2028,7 @@
     <string name="character_counter_pattern" translatable="false">%1$d/%2$d</string>
     <string name="clear_text_end_icon_content_description">Clear text</string>
     <string name="confirmar_remover_tarefa">Deseja remover essa Tarefa?</string>
+    <string name="duracao_pausa_curta">Duração da Pausa Curta (minutos)</string>
     <string description="Screen reader announcement for when a checkbox is on error. [CHAR LIMIT=NONE]" name="error_a11y_label">
     Error: invalid
   </string>

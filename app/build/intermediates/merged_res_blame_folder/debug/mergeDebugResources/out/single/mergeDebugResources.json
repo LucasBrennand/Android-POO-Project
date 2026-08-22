@@ -12,16 +12,20 @@
         "source": "C:\\Users\\Samsung\\.gradle\\daemon\\8.13\\br.ufpe.cin.focuszone.app-main-38:\\layout\\activity_tarefas.xml"
     },
     {
-        "merged": "C:\\Users\\Samsung\\.gradle\\daemon\\8.13\\br.ufpe.cin.focuszone.app-debug-36:\\layout_item_sessao.xml.flat",
-        "source": "C:\\Users\\Samsung\\.gradle\\daemon\\8.13\\br.ufpe.cin.focuszone.app-main-38:\\layout\\item_sessao.xml"
-    },
-    {
         "merged": "C:\\Users\\Samsung\\.gradle\\daemon\\8.13\\br.ufpe.cin.focuszone.app-debug-36:\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\Samsung\\.gradle\\daemon\\8.13\\br.ufpe.cin.focuszone.app-main-38:\\layout\\activity_main.xml"
     },
     {
+        "merged": "C:\\Users\\Samsung\\.gradle\\daemon\\8.13\\br.ufpe.cin.focuszone.app-debug-36:\\layout_item_sessao.xml.flat",
+        "source": "C:\\Users\\Samsung\\.gradle\\daemon\\8.13\\br.ufpe.cin.focuszone.app-main-38:\\layout\\item_sessao.xml"
+    },
+    {
         "merged": "C:\\Users\\Samsung\\.gradle\\daemon\\8.13\\br.ufpe.cin.focuszone.app-debug-36:\\layout-land_activity_main.xml.flat",
         "source": "C:\\Users\\Samsung\\.gradle\\daemon\\8.13\\br.ufpe.cin.focuszone.app-main-38:\\layout-land\\activity_main.xml"
+    },
+    {
+        "merged": "br.ufpe.cin.focuszone.app-debug-36:/layout_activity_configuracao.xml.flat",
+        "source": "br.ufpe.cin.focuszone.app-main-38:/layout/activity_configuracao.xml"
     },
     {
         "merged": "C:\\Users\\Samsung\\.gradle\\daemon\\8.13\\br.ufpe.cin.focuszone.app-debug-36:\\layout_activity_historico.xml.flat",
@@ -42,10 +46,6 @@
     {
         "merged": "C:\\Users\\Samsung\\.gradle\\daemon\\8.13\\br.ufpe.cin.focuszone.app-debug-36:\\drawable_ic_launcher_foreground.xml.flat",
         "source": "C:\\Users\\Samsung\\.gradle\\daemon\\8.13\\br.ufpe.cin.focuszone.app-main-38:\\drawable\\ic_launcher_foreground.xml"
-    },
-    {
-        "merged": "br.ufpe.cin.focuszone.app-debug-36:/layout_activity_main.xml.flat",
-        "source": "br.ufpe.cin.focuszone.app-main-38:/layout/activity_main.xml"
     },
     {
         "merged": "C:\\Users\\Samsung\\.gradle\\daemon\\8.13\\br.ufpe.cin.focuszone.app-debug-36:\\layout_activity_configuracao.xml.flat",

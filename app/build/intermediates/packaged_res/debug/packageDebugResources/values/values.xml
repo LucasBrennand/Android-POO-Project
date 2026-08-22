@@ -31,6 +31,7 @@
     <string name="canal_timer_descricao">Notificações de fim de ciclo de foco</string>
     <string name="canal_timer_nome">Timer de foco</string>
     <string name="confirmar_remover_tarefa">Deseja remover essa Tarefa?</string>
+    <string name="duracao_pausa_curta">Duração da Pausa Curta (minutos)</string>
     <string name="hint_nome_tarefa">No que você vai focar?</string>
     <string name="label_ciclos">Ciclos até a pausa longa</string>
     <string name="label_duracao_foco">Duração do foco (minutos)</string>

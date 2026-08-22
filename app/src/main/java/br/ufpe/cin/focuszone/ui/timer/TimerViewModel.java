@@ -34,6 +34,14 @@ public class TimerViewModel extends AndroidViewModel {
         return stateHolder.getNomeTarefa();
     }
 
+    public LiveData<Integer> getTipoCicloAtual() {
+        return TimerStateHolder.getInstance().getTipoCicloAtual();
+    }
+
+    public LiveData<Integer> getCicloAtual() {
+        return TimerStateHolder.getInstance().getCicloAtual();
+    }
+
     //Criado o metodo para pegar a duração total escolhida
     public long getDuracaoTotalMillis() {
         return configuracaoRepository.getDuracaoFocoMinutos() * 60_000L;
