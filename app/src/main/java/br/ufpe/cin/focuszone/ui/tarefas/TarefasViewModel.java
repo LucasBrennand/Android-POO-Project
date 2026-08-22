@@ -67,7 +67,7 @@ public class TarefasViewModel extends ViewModel {
     public void adicionar(String titulo) {
         new Thread(() -> {
             repository.inserir(new Tarefa(titulo));
-            tarefaAdicionada.setValue(true);
+            tarefaAdicionada.postValue(true);
         }).start();
     }
 }

@@ -80,6 +80,7 @@ string msg_notificacao_pausa
 string msg_titulo_vazio
 string notif_foco_andamento
 string notif_foco_pausado
+string tarefa_adicionada
 string tarefa_ja_existe
 string tarefas_concluidas
 string titulo_compartilhar

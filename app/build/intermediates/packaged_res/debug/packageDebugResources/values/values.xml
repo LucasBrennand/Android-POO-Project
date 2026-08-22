@@ -43,6 +43,7 @@
     <string name="msg_titulo_vazio">Informe um título para a tarefa</string>
     <string name="notif_foco_andamento">Foco em andamento — %1$s</string>
     <string name="notif_foco_pausado">Foco pausado — toque em Iniciar no app pra recomeçar</string>
+    <string name="tarefa_adicionada">Tarefa adicionada</string>
     <string name="tarefa_ja_existe">Essa tarefa já existe</string>
     <string name="tarefas_concluidas">Nenhuma Tarefa Adicionada</string>
     <string name="titulo_compartilhar">Compartilhar sessão</string>

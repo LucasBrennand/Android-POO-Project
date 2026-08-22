@@ -42,4 +42,5 @@
     <string name="tarefas_concluidas">Nenhuma Tarefa Adicionada</string>
     <string name="confirmar_remover_tarefa">Deseja remover essa Tarefa?</string>
     <string name="titulo_confirmar_exclusao">Deseja remover essa sessão do histórico?</string>
+    <string name="tarefa_adicionada">Tarefa adicionada</string>
 </resources>

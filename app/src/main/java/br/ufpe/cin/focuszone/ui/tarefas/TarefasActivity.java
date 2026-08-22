@@ -150,7 +150,7 @@ public class TarefasActivity extends AppCompatActivity {
             if (Boolean.TRUE.equals(adicionada)) {
                 Snackbar.make(
                         findViewById(android.R.id.content),
-                        R.string.btn_adicionar_tarefa,
+                        R.string.tarefa_adicionada,
                         Snackbar.LENGTH_SHORT
                 ).show();
                 viewModel.tarefaAdicionada();

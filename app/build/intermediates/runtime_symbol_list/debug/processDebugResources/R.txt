@@ -4050,6 +4050,7 @@ int string searchview_navigation_content_description 0x7f1000c2
 int string side_sheet_accessibility_pane_title 0x7f1000c3
 int string side_sheet_behavior 0x7f1000c4
 int string status_bar_notification_info_overflow 0x7f1000c5
+int string tarefa_adicionada 0x7f1000d1
 int string tarefa_ja_existe 0x7f1000c6
 int string tarefas_concluidas 0x7f1000c7
 int string titulo_compartilhar 0x7f1000c8
